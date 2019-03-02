@@ -1,5 +1,4 @@
-{% set version = '1.2' %}
-
+{% set version = '1.4' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -8,60 +7,73 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: ibd_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/ibd_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/ibd/ibd_{{ version }}.tar.gz
-  sha256: ba860bc0389646755cdb2109f9adea6aadaeca1d9c01d384f42799fee8d90119
+    - {{ cran_mirror }}/src/contrib/ibd_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/ibd/ibd_{{ version }}.tar.gz
+  sha256: 78ddef6387ab9aedda70bda359cc11e486106383220755ededa5fae3f5faa59c
 
 build:
+  merge_build_host: True  # [win]
+  number: 0
   noarch: generic
-  number: 1000
-
   rpaths:
     - lib/R/lib/
     - lib/
+
 requirements:
   build:
+    - {{posix}}zip               # [win]
+  host:
     - r-base
     - r-mass
     - r-car
+    - r-emmeans
     - r-lpsolve
-    - r-lsmeans
     - r-multcompview
-
   run:
     - r-base
     - r-mass
     - r-car
+    - r-emmeans
     - r-lpsolve
-    - r-lsmeans
     - r-multcompview
 
 test:
   commands:
-    - $R -e "library('ibd')"  # [not win]
+    - $R -e "library('ibd')"           # [not win]
     - "\"%R%\" -e \"library('ibd')\""  # [win]
 
 about:
   home: https://CRAN.R-project.org/package=ibd
   license: GPL (>= 2)
-  summary: This package contains several utility functions related to incomplete block designs.
-    The package contains function to generate efficient incomplete block designs with
-    given numbers of treatments, blocks and block size. The package also contains function
-    to generate an incomplete block design with specified concurrence matrix. There
-    are functions to generate balanced treatment incomplete block designs and incomplete
-    block designs for test versus control treatments comparisons with specified concurrence
-    matrix. Package also allows performing analysis of variance of data and computing
-    least square means of factors from experiments using a connected incomplete block
-    design. Tests of hypothesis of treatment contrasts in incomplete block design set
-    up is supported.
+  summary: 'A collection of several utility functions related to binary incomplete block designs.
+    The package contains function to generate A- and D-efficient binary incomplete block
+    designs with given numbers of treatments, number of blocks and block size. The package
+    also contains function to generate an incomplete block design with specified concurrence
+    matrix. There are functions to generate balanced treatment incomplete block designs
+    and incomplete block designs for test versus control treatments comparisons with
+    specified concurrence matrix. Package also allows performing analysis of variance
+    of data and computing estimated marginal means of factors from experiments using
+    a connected incomplete block design. Tests of hypothesis of treatment contrasts
+    in incomplete block design set up is supported. '
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
 
 extra:
   recipe-maintainers:
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
+    - conda-forge/r
+
+# Package: ibd
+# Version: 1.4
+# Date: 2018-07-23
+# Title: Incomplete Block Designs
+# Authors@R: c(person("B N", "Mandal", role = c("aut", "cre"), email = "mandal.stat@gmail.com"))
+# Author: B N Mandal [aut, cre]
+# Maintainer: B N Mandal <mandal.stat@gmail.com>
+# Depends: R (>= 3.1.1), lpSolve, MASS, car, emmeans, multcompView
+# Description: A collection of several utility functions related to binary incomplete block designs. The package contains function to generate A- and D-efficient binary incomplete block designs with given numbers of treatments, number of blocks and block size. The package also contains function to generate an incomplete block design with specified concurrence matrix. There are functions to generate balanced treatment incomplete block designs and incomplete block designs for test versus control treatments comparisons with specified concurrence matrix. Package also allows performing analysis of variance of data and computing estimated marginal means of factors from experiments using a connected incomplete block design. Tests of hypothesis of treatment contrasts in incomplete block design set up is supported.
+# License: GPL (>= 2)
+# NeedsCompilation: no
+# Packaged: 2018-07-23 22:31:03 UTC; b
+# Repository: CRAN
+# Date/Publication: 2018-07-23 10:20:03 UTC
