@@ -1,4 +1,4 @@
-{% set version = '1.4' %}
+{% set version = "1.5" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/ibd_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/ibd/ibd_{{ version }}.tar.gz
-  sha256: 78ddef6387ab9aedda70bda359cc11e486106383220755ededa5fae3f5faa59c
+  sha256: 59cc4ad01e53e6000482e45a356bd196ffed5e9def9120bcd9eb3a6221f1bb67
 
 build:
   merge_build_host: True  # [win]
