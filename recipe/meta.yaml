@@ -14,7 +14,7 @@ source:
 
 build:
   merge_build_host: True  # [win]
-  number: 2
+  number: 3
   noarch: generic
   rpaths:
     - lib/R/lib/
@@ -43,7 +43,7 @@ test:
 
 about:
   home: https://CRAN.R-project.org/package=ibd
-  license: GPL (>= 2)
+  license: GPL-2.0-or-later
   summary: 'A collection of several utility functions related to binary incomplete block designs.
     The package contains function to generate A- and D-efficient binary incomplete block
     designs with given numbers of treatments, number of blocks and block size. The package
@@ -55,7 +55,8 @@ about:
     a connected incomplete block design. Tests of hypothesis of treatment contrasts
     in incomplete block design set up is supported. '
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
+  license_file:
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
 
 extra:
   recipe-maintainers:
