@@ -3,7 +3,7 @@ About r-ibd
 
 Home: https://CRAN.R-project.org/package=ibd
 
-Package license: GPL (>= 2)
+Package license: GPL-2.0-or-later
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-ibd-feedstock/blob/main/LICENSE.txt)
 
