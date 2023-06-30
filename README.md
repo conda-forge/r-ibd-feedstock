@@ -1,11 +1,11 @@
-About r-ibd
-===========
+About r-ibd-feedstock
+=====================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-ibd-feedstock/blob/main/LICENSE.txt)
 
 Home: https://CRAN.R-project.org/package=ibd
 
 Package license: GPL-2.0-or-later
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-ibd-feedstock/blob/main/LICENSE.txt)
 
 Summary: A collection of several utility functions related to binary incomplete block designs. The package contains function to generate A- and D-efficient binary incomplete block designs with given numbers of treatments, number of blocks and block size. The package also contains function to generate an incomplete block design with specified concurrence matrix. There are functions to generate balanced treatment incomplete block designs and incomplete block designs for test versus control treatments comparisons with specified concurrence matrix. Package also allows performing analysis of variance of data and computing estimated marginal means of factors from experiments using a connected incomplete block design. Tests of hypothesis of treatment contrasts in incomplete block design set up is supported. 
 
